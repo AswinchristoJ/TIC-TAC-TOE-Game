@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/AswinchristoJ/TIC-TAC-TOE-Game/issues"
   },
-  "homepage": "https://github.com/AswinchristoJ/TIC-TAC-TOE-Game#readme"
+  "homepage": "https://github.com/AswinchristoJ/TIC-TAC-TOE-Game#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
