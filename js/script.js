@@ -49,6 +49,11 @@ $('document').ready(() => {
         location.reload()
     }
 
+    function drawclose(){
+        alert('THE GAME IS OVER')
+        location.reload()
+    }
+
     $('input').on('input', (e) => {
 
         let letter = e.target.value
@@ -158,6 +163,19 @@ $('document').ready(() => {
                 }
             }
 
+            let rowCount = 0
+            rows.forEach(e => {
+                if (e.length == 3) rowCount = rowCount + 1
+            });
+
+            let columnCount = 0
+            columns.forEach(e => {
+                if (e.length == 3) columnCount = columnCount + 1
+            });
+
+            if (rowCount == 3 && columnCount == 3) {
+                setTimeout(drawclose, 0)
+            }
 
         } else {
 
