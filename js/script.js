@@ -45,7 +45,7 @@ $('document').ready(() => {
     }
 
     function close() {
-        let flag1 = swal('GAME OVER','------')
+        let flag1 = swal('GAME OVER','------',"success")
         flag1.then((e)=>{
             if(e){
                 location.reload()
@@ -54,7 +54,7 @@ $('document').ready(() => {
     }
 
     function drawclose(){
-        let flag2 = swal('THE GAME DRAWN','-------')
+        let flag2 = swal('THE GAME DRAWN','-------',"info")
         flag2.then((e)=>{
             if(e){
                 location.reload()
@@ -99,12 +99,15 @@ $('document').ready(() => {
             let y1 = $('#tr1.col3').val()
             let y3 = $('#tr3.col1').val()
 
+            let successFlag = 0
+
             if((x1 == x2 && x2 == x3) && (x1 != '')){
 
                 $('#tr1.col1').css('color','green')
                 $('#tr2.col2').css('color','green')
                 $('#tr3.col3').css('color','green')
 
+                successFlag = 1
                 setTimeout(close, 0)
             }else if((y1 == x2 && x2 == y3) && (y1 != '')){
 
@@ -112,6 +115,7 @@ $('document').ready(() => {
                 $('#tr2.col2').css('color','green')
                 $('#tr3.col1').css('color','green')
 
+                successFlag = 1
                 setTimeout(close, 0)
             }
 
@@ -138,6 +142,7 @@ $('document').ready(() => {
                         $('#tr3.col3').css('color', 'green')
                     }
                     
+                    successFlag = 1
                     setTimeout(close, 0)
                     break
                 }
@@ -166,6 +171,7 @@ $('document').ready(() => {
                         $('#tr3.col3').css('color', 'green')
                     }
                     
+                    successFlag = 1
                     setTimeout(close, 0)
                     break
                 }
@@ -181,7 +187,7 @@ $('document').ready(() => {
                 if (e.length == 3) columnCount = columnCount + 1
             });
 
-            if (rowCount == 3 && columnCount == 3) {
+            if (rowCount == 3 && columnCount == 3 && successFlag != 1) {
                 setTimeout(drawclose, 0)
             }
 
