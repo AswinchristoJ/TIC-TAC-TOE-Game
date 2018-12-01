@@ -45,13 +45,21 @@ $('document').ready(() => {
     }
 
     function close() {
-        alert('GAME OVER')
-        location.reload()
+        let flag1 = swal('GAME OVER','------')
+        flag1.then((e)=>{
+            if(e){
+                location.reload()
+            }
+        })
     }
 
     function drawclose(){
-        alert('THE GAME IS OVER')
-        location.reload()
+        let flag2 = swal('THE GAME DRAWN','-------')
+        flag2.then((e)=>{
+            if(e){
+                location.reload()
+            }
+        })
     }
 
     $('input').on('input', (e) => {
