@@ -1,6 +1,7 @@
 $('document').ready(() => {
 
     let state = ''
+    let winner = ''
     let tr1 = [], tr2 = [], tr3 = [], col1 = [], col2 = [], col3 = []
     let rows = [tr1, tr2, tr3]
     let columns = [col1, col2, col3]
@@ -38,25 +39,28 @@ $('document').ready(() => {
 
     function success(arr) {
 
-        if (arr[0] == arr[1] && arr[1] == arr[2] && arr[0] != undefined)
+        if (arr[0] == arr[1] && arr[1] == arr[2] && arr[0] != undefined) {
+            winner = arr[0]
             return true
-        else
+        }
+        else {
             return false
+        }
     }
 
     function close() {
-        let flag1 = swal('GAME OVER','------',"success")
-        flag1.then((e)=>{
-            if(e){
+        let flag1 = swal(`Player - ${winner} WINS`, '------', "success")
+        flag1.then((e) => {
+            if (e) {
                 location.reload()
             }
         })
     }
 
-    function drawclose(){
-        let flag2 = swal('THE GAME DRAWN','-------',"info")
-        flag2.then((e)=>{
-            if(e){
+    function drawclose() {
+        let flag2 = swal('THE GAME DRAWN', '-------', "info")
+        flag2.then((e) => {
+            if (e) {
                 location.reload()
             }
         })
@@ -68,7 +72,7 @@ $('document').ready(() => {
         let id = e.target.id
         let clas = $(e.target).attr('class')
 
-        if ((letter == 'x' || letter == 'o') && (state !== letter)) {
+        if ((letter == 'X' || letter == 'O') && (state !== letter)) {
 
             if (id == 'tr1') tr1.push(letter)
             else if (id == 'tr2') tr2.push(letter)
@@ -79,17 +83,17 @@ $('document').ready(() => {
             else if (clas == 'col3') col3.push(letter)
 
             $('#' + id + '.' + clas).prop('disabled', true)
-            if (letter == 'x') {
+            if (letter == 'X') {
 
                 turnXdisable()
                 turnOenable()
-                state = 'x'
+                state = 'X'
 
-            } else if (letter == 'o') {
+            } else if (letter == 'O') {
 
                 turnOdisable()
                 turnXenable()
-                state = 'o'
+                state = 'O'
             }
 
             let x1 = $('#tr1.col1').val()
@@ -101,20 +105,22 @@ $('document').ready(() => {
 
             let successFlag = 0
 
-            if((x1 == x2 && x2 == x3) && (x1 != '')){
+            if ((x1 == x2 && x2 == x3) && (x1 != '')) {
 
-                $('#tr1.col1').css('color','green')
-                $('#tr2.col2').css('color','green')
-                $('#tr3.col3').css('color','green')
+                $('#tr1.col1').css('color', 'green')
+                $('#tr2.col2').css('color', 'green')
+                $('#tr3.col3').css('color', 'green')
 
+                winner = x1
                 successFlag = 1
                 setTimeout(close, 0)
-            }else if((y1 == x2 && x2 == y3) && (y1 != '')){
+            } else if ((y1 == x2 && x2 == y3) && (y1 != '')) {
 
-                $('#tr1.col3').css('color','green')
-                $('#tr2.col2').css('color','green')
-                $('#tr3.col1').css('color','green')
+                $('#tr1.col3').css('color', 'green')
+                $('#tr2.col2').css('color', 'green')
+                $('#tr3.col1').css('color', 'green')
 
+                winner = y1
                 successFlag = 1
                 setTimeout(close, 0)
             }
@@ -141,13 +147,13 @@ $('document').ready(() => {
                         $('#tr3.col2').css('color', 'green')
                         $('#tr3.col3').css('color', 'green')
                     }
-                    
+
                     successFlag = 1
                     setTimeout(close, 0)
                     break
                 }
             }
-            
+
             let j = 0
 
             for (j = 0; j < columns.length; j++) {
@@ -170,7 +176,7 @@ $('document').ready(() => {
                         $('#tr2.col3').css('color', 'green')
                         $('#tr3.col3').css('color', 'green')
                     }
-                    
+
                     successFlag = 1
                     setTimeout(close, 0)
                     break
