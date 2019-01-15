@@ -65,18 +65,28 @@ $('document').ready(() => {
         }
     }
 
-    function close() {
-        let flag1 = swal(`Player - ${winner} WINS`, '------', "success")
-        flag1.then((e) => {
-            if (e) {
-                location.reload()
-            }
-        })
-    }
+    function close(text) {
+        
+        let closeText = ""
 
-    function drawclose() {
-        let flag2 = swal('THE GAME DRAWN', '-------', "info")
-        flag2.then((e) => {
+        if(text == "won"){
+            closeText = `Player - ${winner} WINS\n ------\n "Success!"`
+        }else if(text == "draw"){
+            closeText = `"Game Drawn!"\n-------\n`
+        }
+
+        Swal({
+            title: closeText,
+            animation: false,
+            customClass: 'animated tada',
+            width: 600,
+            padding: '3em',
+            backdrop: `
+              rgba(0,0,123,0.4)
+              url("js/images/nyan-cat.gif")
+              repeat
+            `
+        }).then((e) => {
             if (e) {
                 location.reload()
             }
@@ -130,7 +140,7 @@ $('document').ready(() => {
 
                 winner = x1
                 successFlag = 1
-                setTimeout(close, 0)
+                close("won")
             } else if ((y1 == x2 && x2 == y3) && (y1 != '')) {
 
                 $('#tr1.col3').css('color', 'green')
@@ -139,7 +149,7 @@ $('document').ready(() => {
 
                 winner = y1
                 successFlag = 1
-                setTimeout(close, 0)
+                close("won")
             }
 
             let i = 0
@@ -166,7 +176,7 @@ $('document').ready(() => {
                     }
 
                     successFlag = 1
-                    setTimeout(close, 0)
+                    close("won")
                     break
                 }
             }
@@ -195,7 +205,7 @@ $('document').ready(() => {
                     }
 
                     successFlag = 1
-                    setTimeout(close, 0)
+                    close("won")
                     break
                 }
             }
@@ -211,7 +221,7 @@ $('document').ready(() => {
             });
 
             if (rowCount == 3 && columnCount == 3 && successFlag != 1) {
-                setTimeout(drawclose, 0)
+                close("draw")
             }
 
         } else {
