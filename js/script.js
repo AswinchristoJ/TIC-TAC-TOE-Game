@@ -6,6 +6,26 @@ $('document').ready(() => {
     let rows = [tr1, tr2, tr3]
     let columns = [col1, col2, col3]
 
+    //code for input boxes border color
+    $("input").on({
+        focus: function () {
+            $(this).css({
+                "border-width": "thick",
+                "border-style": "outset",
+                "border-color": "gray",
+                "border-radius": "10px",
+            })
+        },
+        blur: function () {
+            $(this).css({
+                "border-width": "",
+                "border-style": "",
+                "border-color": "",
+                "border-radius": "",
+            })
+        }
+    })
+
     function turnXdisable() {
         $('#turnBox1').css({
             'opacity': '0.5',
