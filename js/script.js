@@ -6,9 +6,6 @@ $('document').ready(() => {
     let rows = [tr1, tr2, tr3]
     let columns = [col1, col2, col3]
 
-    turnXdisable()
-    turnOdisable()
-
     function turnXdisable() {
         $('#turnBox1').css({
             'opacity': '0.5',
