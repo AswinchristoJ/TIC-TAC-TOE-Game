@@ -11,7 +11,7 @@ input{
 span{
     margin:0.5rem;
     font-style: italic;
-    font-size: 28;
+    font-size: 2rem;
 }
 #turnBox2,#turnBox1{
     width: 20rem;
