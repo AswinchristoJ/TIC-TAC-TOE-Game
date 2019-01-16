@@ -6,9 +6,18 @@ $('document').ready(() => {
     let rows = [tr1, tr2, tr3]
     let columns = [col1, col2, col3]
 
+    //code to disabling the softkeyboard in mobiles
+    $('input').attr('readonly','readonly');
+
     //code for input boxes border color
+
+    let focused;
+
     $("input").on({
         focus: function () {
+
+            focused = document.activeElement;
+
             $(this).css({
                 "border-width": "thick",
                 "border-style": "outset",
@@ -25,6 +34,23 @@ $('document').ready(() => {
             })
         }
     })
+
+    $("#turnBox1").click(()=>{
+        fillBoxes("X")
+    })
+
+    $("#turnBox2").click(()=>{
+        fillBoxes("O")
+    })
+
+    function fillBoxes(param){
+        if(focused != undefined){
+            if(!focused.value){
+                $(focused).val(param)
+                $(focused).trigger('input')
+            }
+        }
+    }
 
     function turnXdisable() {
         $('#turnBox1').css({
