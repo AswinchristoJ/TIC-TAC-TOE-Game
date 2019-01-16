@@ -1,5 +1,10 @@
 $('document').ready(() => {
 
+    //code to load the particle layer
+    particlesJS.load('particles-js', 'assets/particles.json', function () {
+        console.log('callback - particles.js config loaded');
+    });
+
     let state = ''
     let winner = ''
     let tr1 = [], tr2 = [], tr3 = [], col1 = [], col2 = [], col3 = []
