@@ -11,10 +11,12 @@
     <link rel="stylesheet" type="text/css" media="screen and (max-width: 929px)" href="/css/smallscreen.css">
     <link rel="stylesheet" type="text/css" href="/css/animate.css">
     <script src="js/ajax/jquery.min.js"></script>
+    <script src="js/particle/particles.min.js"></script>
     <script src="js/sweetAlert/sweetalert2.all.min.js"></script>
 </head>
 
 <body>
+    <div id="particles-js" style="z-index:-1;position:absolute;width: 100%;height: 99vh;"></div>
     <div id="header">
         <h1 style="font-family: sans-serif;">TIC-TAC-TOE</h1>
         <label style="font-style: italic;color: black">A 2-player game</label>
@@ -22,7 +24,7 @@
     <div id="flex-container">
 
         <div id="turnBox1">
-            <span>turn :</span>
+            <span>Turn :</span>
             <label>X</label>
         </div>
         <div id="xoBox">
@@ -63,7 +65,7 @@
             </table>
         </div>
         <div id="turnBox2">
-            <span>turn :</span>
+            <span>Turn :</span>
             <label>O</label>
         </div>
     </div>
