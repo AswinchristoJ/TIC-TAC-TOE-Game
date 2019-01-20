@@ -12,7 +12,7 @@ $('document').ready(() => {
     let columns = [col1, col2, col3]
 
     //code to disabling the softkeyboard in mobiles
-    $('input').attr('readonly','readonly');
+    $('input').attr('readonly', 'readonly');
 
     //code for input boxes border color
 
@@ -40,17 +40,17 @@ $('document').ready(() => {
         }
     })
 
-    $("#turnBox1").click(()=>{
+    $("#turnBox1").click(() => {
         fillBoxes("X")
     })
 
-    $("#turnBox2").click(()=>{
+    $("#turnBox2").click(() => {
         fillBoxes("O")
     })
 
-    function fillBoxes(param){
-        if(focused != undefined){
-            if(!focused.value){
+    function fillBoxes(param) {
+        if (focused != undefined) {
+            if (!focused.value) {
                 $(focused).val(param)
                 $(focused).trigger('input')
             }
@@ -97,12 +97,12 @@ $('document').ready(() => {
     }
 
     function close(text) {
-        
+
         let closeText = ""
 
-        if(text == "won"){
+        if (text == "won") {
             closeText = `Player - ${winner} WINS\n ------\n "Success!"`
-        }else if(text == "draw"){
+        } else if (text == "draw") {
             closeText = `"Game Drawn!"\n-------\n`
         }
 
@@ -119,7 +119,7 @@ $('document').ready(() => {
             `
         }).then((e) => {
             if (e) {
-                location.reload()
+                window.location.href = window.location.href
             }
         })
     }
